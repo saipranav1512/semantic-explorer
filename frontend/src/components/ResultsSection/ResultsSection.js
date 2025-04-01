@@ -1,6 +1,5 @@
 import './ResultsSection.css';
 import {List, ListItem} from '@mui/material'; 
-import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import info from '../../images/info.png';
 import voice from '../../images/voice.png'; 
@@ -24,7 +23,7 @@ function constructData(){
   dataLength = 0;
   data = {};
   for (var i=0; i<search_data.search_results.length; i++){
-    if(pos != "Default" && search_data.search_results[i]['lemma_wordform']['linguist_info']['pos'] !== pos){
+    if(pos !== "Default" && search_data.search_results[i]['lemma_wordform']['linguist_info']['pos'] !== pos){
       continue
     }
 
@@ -48,13 +47,13 @@ function constructData(){
 
     var contextInfo = [] // [info(list with 2 items), recording, inflection category, emoji, [category, tooptip text], stem, pos]
 
-    if (search_data.search_results[i]['relabelled_fst_analysis']['plain_english'] != undefined){
+    if (search_data.search_results[i]['relabelled_fst_analysis']['plain_english'] !== undefined){
       contextInfo.push(search_data.search_results[i]['relabelled_fst_analysis']['plain_english'])
     }else{
       contextInfo.push(null)
     }
 
-    if (search_data.search_results[i]['recording'] != ""){
+    if (search_data.search_results[i]['recording'] !== ""){
       contextInfo.push(search_data.search_results[i]['recording'])
     }else{
       contextInfo.push(null)
@@ -78,7 +77,7 @@ function constructData(){
     }
     contextInfo.push(subInflec)
 
-    if(search_data.search_results[i]['lemma_wordform']['linguist_info']['stem'] != undefined){
+    if(search_data.search_results[i]['lemma_wordform']['linguist_info']['stem'] !== undefined){
       contextInfo.push(search_data.search_results[i]['lemma_wordform']['linguist_info']['stem'])
     }else{
       contextInfo.push(null)
@@ -101,7 +100,7 @@ function constructData(){
     
     var domains_raw = []
     for(var item in domains){
-      if(domains[item] == ""){
+      if(domains[item] === ""){
         domains.splice(item, 1)
         continue
       }
@@ -118,7 +117,7 @@ function constructData(){
     var rw_indices_cleaned = rw_indices_string.split(";")
     for(var item in rw_indices_cleaned){
       //if rw_indices_cleaned[item] == "", remove it
-      if(rw_indices_cleaned[item] == ""){
+      if(rw_indices_cleaned[item] === ""){
         rw_indices_cleaned.splice(item, 1)
         continue
       }
@@ -188,13 +187,17 @@ function ResultsSection(){
                         <div id='firstline_parent'>
                           <h1 id="word_title">{search_data.search_results[data[index].id]['lemma_wordform']['text']}</h1>
                           {data[index]['context'].map((item, i)=>{
-                            if(i==0 && item.length!=0){ //[info(list with items), recording link, inflection category, emoji, [category, tooptip text], stem]
+                            if(i===0 && item.length!==0){ //[info(list with items), recording link, inflection category, emoji, [category, tooptip text], stem]
+                              // eslint-disable-next-line jsx-a11y/alt-text
                               return <Tooltip key={i} title={<div>{item[0]}<br></br>{item[1]}</div>}><img id='info' src={info}/></Tooltip>
-                            }else if(i==0){
+                            }else if(i===0){
+                              // eslint-disable-next-line array-callback-return
                               return
-                            }else if(i==1 && item!=null){
+                            }else if(i===1 && item!=null){
+                              // eslint-disable-next-line jsx-a11y/alt-text
                               return <img id='voice' key={i} src={voice} onClick={() => startAudio(item)}/>
                             }else{
+                              // eslint-disable-next-line array-callback-return
                               return
                             }
                           })}
@@ -202,21 +205,24 @@ function ResultsSection(){
 
                         <div id='secondline_parent'>
                           {data[index]['context'].map((item, i) => {
-                            if(i==2){
+                            if(i===2){
                               return <h3 className='word_body' key={i}>{item}</h3>
-                            }else if(i==3 && item!=null){
+                            }else if(i===3 && item!=null){
                               return <h3 className='item word_body' key={i}>{item}</h3>
-                            }else if(i==3){
+                            }else if(i===3){
+                              // eslint-disable-next-line array-callback-return
                               return
-                            }else if(i==4){
-                              if(item == "None"){
+                            }else if(i===4){
+                              if(item === "None"){
                                 return <h3 className='item word_body' key={i}>{item[0]}</h3>
                               }else{
                                 return <Tooltip key={i} title={item[1]}><h3 className='item word_body' id='like_secondline'>{item[0]}</h3></Tooltip> 
                               }
-                            }else if(i==5 && item!=null){
+                            }else if(i===5 && item!=null){
+                              // eslint-disable-next-line jsx-a11y/alt-text
                               return <Tooltip key={i} title={item}><img className='item' src={book}/></Tooltip> 
-                            }else if(i==5){
+                            }else if(i===5){
+                              // eslint-disable-next-line array-callback-return
                               return
                             } 
                           })}
@@ -225,13 +231,13 @@ function ResultsSection(){
                         <div id="definitions">
                           {data[index]['def'].map((item, i) => {   // iterate through data items
                             return  <div key={i}><h1 className='definition'>{item[0]}</h1>{
-                              item.map((txt,j)=>{if(j!=0){
+                              item.map((txt,j)=>{if(j!==0){
                                 var tooltiptxt;
-                                if(txt == "CW"){
+                                if(txt === "CW"){
                                   tooltiptxt = "Wolvengrey, Arok, editor. Cree: Words. Regina, University of Regina Press, 2001."
-                                }else if(txt == "AECD"){
+                                }else if(txt === "AECD"){
                                   tooltiptxt = "Alberta Elders' Cree Dictionary/alberta ohci kehtehayak nehiyaw otwestamâkewasinahikan, compiled by Nancy LeClaire and George Cardinal, edited by Earle H. Waugh. Edmonton: University of Alberta Press, 2002."
-                                }else if(txt == "MD"){
+                                }else if(txt === "MD"){
                                   tooltiptxt = "Maskwacis Dictionary. Maskwacîs, Maskwachees Cultural College, 1998."
                                 }
                                 return <Tooltip key={j} title={tooltiptxt}><h3 className='citations'>{txt}</h3></Tooltip>}

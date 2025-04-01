@@ -108,12 +108,12 @@ const RenderForeignObjectNode = ({
                                 <ListItemText primary={nodeDatum.creeWords[index].word} sx={{padding: '5px'}}/>
                               </ListItemButton>
                             </Tooltip>
-                            <a target='_blank' href={'https://itwewina.altlab.app/word/' + nodeDatum.creeWords[index].slug + '/'}> 
+                            <a target='_blank' href={'https://itwewina.altlab.app/word/' + nodeDatum.creeWords[index].slug + '/'} rel="noreferrer"> 
                               <IconButton>
                                 <InfoOutlined sx={{color: 'black', strokeWidth: 0.5}}/>
                               </IconButton>
                             </a>
-                            <a target='_blank' href={window.location.href.replace(/wordtree.*/, '') + 'search/' + nodeDatum.creeWords[index].word + '/Default'}>
+                            <a target='_blank' href={window.location.href.replace(/wordtree.*/, '') + 'search/' + nodeDatum.creeWords[index].word + '/Default'} rel="noreferrer">
                               <IconButton>
                                 <LaunchOutlined sx={{color: 'black', strokeWidth: 0.5}}/>
                               </IconButton>  

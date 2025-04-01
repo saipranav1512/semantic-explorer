@@ -39,9 +39,9 @@ function WordGraph() {
   const maxZoom = 5;
   const word = domain;
   const [graphData, setGraphData] = useState(constructInitialGraph(word));
-  useEffect(() => {
-    console.log("Graph Data:", graphData);
-  }, [graphData]);
+  //useEffect(() => {
+  //  console.log("Graph Data:", graphData);
+  //}, [graphData]);
   const nodeSize = { x: 600, y: 500 };
   const foreignObjectProps = { width: nodeSize.x, height: nodeSize.y,  x: -80 , y: -125};
   const [translate, containerRef] = useCenteredTree();
