@@ -253,7 +253,7 @@ function ResultsSection(){
                             <div className='list_of_domains'>
                               {/* <Link to="/wordtree" style={{textDecoration:'none'}}> */}
                               {data[index]['domains'].map((item, i)=>{
-                                if (item != '') { // if the domain is not empty 
+                                if (item !== '') { // if the domain is not empty 
                                 return <Button key={index} className="graph_button" sx={{
                                   fontFamily: 'Open Sans, sans-serif',
                                   fontSize: '0.8rem',
