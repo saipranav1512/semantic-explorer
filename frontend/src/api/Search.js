@@ -56,7 +56,7 @@ export function getCreeWords(results) {
     .filter(word => word);
   
   // Log the extracted words
-  logData("Cree Words", creeWords);
+  // logData("Cree Words", creeWords);
 
   return creeWords;
 }
@@ -72,7 +72,7 @@ export function getHypernyms(index) {
   ]);
 
   // Log hypernyms
-  logData("Hypernyms", formattedHypernyms);
+  // logData("Hypernyms", formattedHypernyms);
 
   return formattedHypernyms;
 }
@@ -88,7 +88,7 @@ export function getHyponyms(index) {
   ]);
 
   // Log hyponyms
-  logData("Hyponyms", formattedHyponyms);
+  // logData("Hyponyms", formattedHyponyms);
 
   return formattedHyponyms;
 }
@@ -134,7 +134,7 @@ export function searchDomainIndex(domainName) {
 }
 
 // Logging function with correct template literal usage
-export function logData(label, data) {
+ export function logData(label, data) {
   console.log(`\n=== ${label} ===`);
   console.log(JSON.stringify(data, null, 2));
 }
