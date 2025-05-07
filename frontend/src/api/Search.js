@@ -37,7 +37,7 @@ export async function searchRWRelations(index) {
     };
 
     // Log the result data BEFORE returning
-    logData("searchRWRelations Result", resultData);
+    // logData("searchRWRelations Result", resultData);
 
     return resultData;
   } catch (error) {
@@ -56,7 +56,7 @@ export function getCreeWords(results) {
     .filter(word => word);
   
   // Log the extracted words
-  logData("Cree Words", creeWords);
+  // logData("Cree Words", creeWords);
 
   return creeWords;
 }
@@ -72,7 +72,7 @@ export function getHypernyms(index) {
   ]);
 
   // Log hypernyms
-  logData("Hypernyms", formattedHypernyms);
+  // logData("Hypernyms", formattedHypernyms);
 
   return formattedHypernyms;
 }
@@ -88,7 +88,7 @@ export function getHyponyms(index) {
   ]);
 
   // Log hyponyms
-  logData("Hyponyms", formattedHyponyms);
+  // logData("Hyponyms", formattedHyponyms);
 
   return formattedHyponyms;
 }
@@ -119,7 +119,7 @@ export function searchRWByDomain(index, store) {
         definitions: word.lemma_wordform.definitions,
       }));
 
-      //logData("Search RW By Domain - Formatted Array", formattedArray);
+      // logData("Search RW By Domain - Formatted Array", formattedArray);
 
       // Return an object containing both the formatted results and the Cree words
       return formattedArray;
